@@ -12,7 +12,8 @@ const nextConfig = {
     ],
     domains: ['localhost'],
   },
-  basePath: '/cg-en',
+  basePath: '',
+  assetPrefix: '/',
 }
 
 module.exports = nextConfig 
