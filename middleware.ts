@@ -10,9 +10,13 @@ function getLocale(request: NextRequest) {
 }
 
 export function middleware(request: NextRequest) {
-  // Check if there is any supported locale in the pathname
   const pathname = request.nextUrl.pathname
   
+  // Skip middleware for images
+  if (pathname.startsWith('/images/')) {
+    return NextResponse.next()
+  }
+
   // Check if the pathname starts with a locale
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
@@ -29,6 +33,6 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     // Skip all internal paths (_next)
-    '/((?!_next|api|favicon.ico).*)',
+    '/((?!_next|api|favicon.ico|images).*)',
   ],
 } 
