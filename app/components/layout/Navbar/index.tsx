@@ -33,10 +33,10 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex-shrink-0 transition-transform duration-300 hover:scale-105">
-            <Link href="/" className="block">
+            <Link href="/en" className="block">
               <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-accent/10">
                 <Image
-                  src="/crazy-garage-website/images/logo/logo.jpg"
+                  src="/images/logo/logo.jpg"
                   alt="Crazy Garage Logo"
                   fill
                   className="object-cover"

@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Montserrat, Roboto } from 'next/font/google';
 import './styles/globals.css';
 import Navbar from './components/layout/Navbar';
-import Script from 'next/script';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -36,9 +35,9 @@ export default function RootLayout({
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         />
       </head>
-      <body className="bg-primary text-accent">
+      <body className="min-h-screen bg-primary text-accent antialiased">
         <Navbar />
-        {children}
+        <main className="relative">{children}</main>
       </body>
     </html>
   );
