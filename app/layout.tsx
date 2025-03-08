@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Montserrat, Roboto } from 'next/font/google';
 import './styles/globals.css';
+import Navbar from './components/layout/Navbar';
+import Script from 'next/script';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -28,7 +30,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${montserrat.variable} ${roboto.variable}`}>
-      <body className="bg-primary text-accent">{children}</body>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        />
+      </head>
+      <body className="bg-primary text-accent">
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 }
