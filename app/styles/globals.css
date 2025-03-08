@@ -5,6 +5,9 @@
 :root {
   --foreground-rgb: 232, 232, 232;
   --background-rgb: 26, 26, 26;
+  --primary: #1a1a1a;
+  --secondary: #2d2d2d;
+  --accent: #e8e8e8;
 }
 
 body {
@@ -20,5 +23,37 @@ body {
 
   body {
     @apply font-roboto antialiased;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+}
+
+@layer utilities {
+  .text-primary {
+    color: var(--primary);
+  }
+  
+  .text-secondary {
+    color: var(--secondary);
+  }
+  
+  .text-accent {
+    color: var(--accent);
+  }
+  
+  .bg-primary {
+    background-color: var(--primary);
+  }
+  
+  .bg-secondary {
+    background-color: var(--secondary);
+  }
+  
+  .bg-accent {
+    background-color: var(--accent);
   }
 } 

@@ -13,8 +13,8 @@ module.exports = {
         accent: '#e8e8e8',
       },
       fontFamily: {
-        montserrat: ['Montserrat', 'sans-serif'],
-        roboto: ['Roboto', 'sans-serif'],
+        montserrat: ['var(--font-montserrat)'],
+        roboto: ['var(--font-roboto)'],
       },
     },
   },
