@@ -6,16 +6,28 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const languages = [
-  { code: 'en', name: 'English', flag: '/images/flags/en.webp' },
-  { code: 'mk', name: 'Македонски', flag: '/images/flags/mk.png' },
-  { code: 'sq', name: 'Shqip', flag: '/images/flags/al.jpg' },
+  {
+    code: 'en',
+    name: 'English',
+    flag: '/images/flags/en.webp',
+  },
+  {
+    code: 'mk',
+    name: 'Македонски',
+    flag: '/images/flags/mk.png',
+  },
+  {
+    code: 'sq',
+    name: 'Shqip',
+    flag: '/images/flags/al.jpg',
+  },
 ] as const;
 
 export default function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
-  const currentLang = pathname.split('/')[1] || 'en';
+  const currentLang = pathname.split('/')[2] || 'en';
   const currentLanguage =
     languages.find((lang) => lang.code === currentLang) || languages[0];
 
