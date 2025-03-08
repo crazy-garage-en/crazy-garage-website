@@ -12,8 +12,8 @@ const nextConfig = {
     ],
     domains: ['localhost'],
   },
-  basePath: '',
-  assetPrefix: '/',
+  basePath: '/crazy-garage-website',
+  assetPrefix: '/crazy-garage-website',
 }
 
 module.exports = nextConfig 

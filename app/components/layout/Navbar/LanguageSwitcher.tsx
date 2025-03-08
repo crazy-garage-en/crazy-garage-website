@@ -9,17 +9,17 @@ const languages = [
   {
     code: 'en',
     name: 'English',
-    flag: '/images/flags/en.webp',
+    flag: '/crazy-garage-website/images/flags/en.webp',
   },
   {
     code: 'mk',
     name: 'Македонски',
-    flag: '/images/flags/mk.png',
+    flag: '/crazy-garage-website/images/flags/mk.png',
   },
   {
     code: 'sq',
     name: 'Shqip',
-    flag: '/images/flags/al.jpg',
+    flag: '/crazy-garage-website/images/flags/al.jpg',
   },
 ] as const;
 

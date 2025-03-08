@@ -36,7 +36,7 @@ export default function Navbar() {
             <Link href="/" className="block">
               <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-accent/10">
                 <Image
-                  src="/images/logo/logo.jpg"
+                  src="/crazy-garage-website/images/logo/logo.jpg"
                   alt="Crazy Garage Logo"
                   fill
                   className="object-cover"
