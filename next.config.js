@@ -2,8 +2,8 @@
 const nextConfig = {
   reactStrictMode: true,
   output: 'export',
-  basePath: '/crazy-garage-website',
-  assetPrefix: '/crazy-garage-website/',
+  basePath: process.env.NODE_ENV === 'production' ? '/crazy-garage-website' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/crazy-garage-website/' : '',
   images: {
     unoptimized: true,
     remotePatterns: [
