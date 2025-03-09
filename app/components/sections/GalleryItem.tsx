@@ -4,11 +4,7 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faArrowRight,
-  faArrowsLeftRight,
-} from '@fortawesome/free-solid-svg-icons';
-import Link from 'next/link';
+import { faArrowsLeftRight } from '@fortawesome/free-solid-svg-icons';
 
 interface GalleryItemProps {
   title: string;
@@ -18,13 +14,13 @@ interface GalleryItemProps {
   delay: number;
 }
 
-const GalleryItem = ({
+export default function GalleryItem({
   title,
   description,
   beforeImage,
   afterImage,
   delay,
-}: GalleryItemProps) => {
+}: GalleryItemProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -236,88 +232,5 @@ const GalleryItem = ({
         <p className="text-gray-300/90">{description}</p>
       </div>
     </motion.div>
-  );
-};
-
-export default function Gallery() {
-  const galleryItems = [
-    {
-      title: 'Interior Door Panel',
-      description: 'Professional interior restoration and deep cleaning',
-      beforeImage: '/images/gallery/left-side-door-before.JPG',
-      afterImage: '/images/gallery/left-side-door-after.JPG',
-    },
-    {
-      title: 'Interior Side Panel',
-      description: 'Complete interior detailing and surface restoration',
-      beforeImage: '/images/gallery/inside-from-right-before-2.JPG',
-      afterImage: '/images/gallery/from-right-side-after.JPG',
-    },
-    {
-      title: 'Surface Treatment',
-      description: 'Professional surface cleaning and protection',
-      beforeImage: '/images/gallery/before.jpeg',
-      afterImage: '/images/gallery/after.jpeg',
-    },
-  ];
-
-  return (
-    <section
-      id="gallery"
-      className="py-24 lg:py-32 bg-gradient-to-b from-primary via-primary/95 to-primary relative overflow-hidden"
-    >
-      {/* Background gradient effects */}
-      <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-transparent opacity-50" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,var(--tw-gradient-stops))] from-accent/10 via-transparent to-transparent opacity-30" />
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-center mb-16 lg:mb-24"
-        >
-          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-            Featured Transformations
-          </h2>
-          <p className="text-xl text-gray-300/90 max-w-2xl mx-auto">
-            Witness the remarkable results of our professional detailing
-            services
-          </p>
-          <div className="w-24 h-1.5 bg-accent/50 mx-auto mt-8 rounded-full" />
-        </motion.div>
-
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-          {galleryItems.map((item, index) => (
-            <GalleryItem key={index} {...item} delay={index} />
-          ))}
-        </div>
-
-        {/* View Full Gallery CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-16 text-center"
-        >
-          <p className="text-gray-300/90 mb-6">
-            Explore our complete collection of transformations
-          </p>
-          <Link
-            href="/en/gallery"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-accent/10 text-accent hover:bg-accent/20 transition-all duration-300 rounded-xl font-medium text-lg group"
-          >
-            <span>View Full Gallery</span>
-            <FontAwesomeIcon
-              icon={faArrowRight}
-              className="text-sm transition-transform duration-300 group-hover:translate-x-1"
-            />
-          </Link>
-        </motion.div>
-      </div>
-    </section>
   );
 }
