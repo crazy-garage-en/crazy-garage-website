@@ -3,9 +3,6 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 
-const basePath =
-  process.env.NODE_ENV === 'production' ? '/crazy-garage-website' : '';
-
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -18,7 +15,7 @@ export default function Hero() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src={`${basePath}/images/hero/hero-section.webp`}
+          src="/images/hero/hero-section.webp"
           alt="Crazy Garage Hero Background"
           fill
           className="object-cover"
