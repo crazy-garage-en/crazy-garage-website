@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1a1a1a">
+    <meta name="description" content="Transform your car's look with Crazy Garage's professional car detailing, polishing, and headlight restoration services.">
+
+    <!-- Performance optimizations -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="styles/main.css" as="style">
+    <link rel="preload" href="scripts/main.js" as="script">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="/">
+                    <img src="assets/logo/logo.jpg" alt="Crazy Garage Logo">
+                </a>
+            </div>
+            <div class="nav-content">
+                <div class="nav-links">
+                    <a href="#services" data-i18n="nav.services">Services</a>
+                    <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+                    <a href="#contact" data-i18n="nav.contact">Contact</a>
+                </div>
+                <div class="language-switcher">
+                    <button class="current-lang">
+                        <img src="assets/flags/en.webp" alt="English" data-lang="en">
+                        <span>English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <ul class="lang-dropdown">
+                        <li data-lang="mk">
+                            <img src="assets/flags/mk.png" alt="Македонски">
+                            <span>Македонски</span>
+                        </li>
+                        <li data-lang="sq">
+                            <img src="assets/flags/al.jpg" alt="Shqip">
+                            <span>Shqip</span>
+                        </li>
+                        <li data-lang="en">
+                            <img src="assets/flags/en.webp" alt="English">
+                            <span>English</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-i18n="hero.title">Bringing Your Ride Back to Life!</h1>
+            <p data-i18n="hero.subtitle">Experience premium car detailing and headlight restoration services</p>
+            <div class="hero-buttons">
+                <button class="cta-button primary" data-i18n="hero.cta.polish">Get Your Car Polished</button>
+                <button class="cta-button secondary" data-i18n="hero.cta.view">View Our Work</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <!-- Will be styled with CSS background -->
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-container">
+            <h2 data-i18n="services.title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-car-side"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-i18n="services.carPolish.title">Car Polish</h3>
+                        <p data-i18n="services.carPolish.description">Professional exterior polishing and paint correction for a showroom-worthy finish.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> <span data-i18n="services.carPolish.features.0">Paint correction</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="services.carPolish.features.1">Swirl removal</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="services.carPolish.features.2">Deep shine restoration</span></li>
+                        </ul>
+                        <a href="#gallery" class="service-link">
+                            <span data-i18n="services.viewGallery">View in Gallery</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-i18n="services.headlightsPolish.title">Headlights Polish</h3>
+                        <p data-i18n="services.headlightsPolish.description">Restore clarity and brightness to your headlights for better visibility and appearance.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> <span data-i18n="services.headlightsPolish.features.0">UV protection</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="services.headlightsPolish.features.1">Yellowing removal</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="services.headlightsPolish.features.2">Crystal clear finish</span></li>
+                        </ul>
+                        <a href="#gallery" class="service-link">
+                            <span data-i18n="services.viewGallery">View in Gallery</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-i18n="services.headlightsRestoration.title">Headlights Restoration</h3>
+                        <p data-i18n="services.headlightsRestoration.description">Complete restoration of severely damaged or oxidized headlights.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> <span data-i18n="services.headlightsRestoration.features.0">Deep restoration</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="services.headlightsRestoration.features.1">Protective coating</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="services.headlightsRestoration.features.2">Long-lasting results</span></li>
+                        </ul>
+                        <a href="#gallery" class="service-link">
+                            <span data-i18n="services.viewGallery">View in Gallery</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-i18n="services.angelEyes.title">Angel Eyes Mount</h3>
+                        <p data-i18n="services.angelEyes.description">Custom installation of angel eyes for a unique and modern look.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> <span data-i18n="services.angelEyes.features.0">Professional installation</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="services.angelEyes.features.1">Various styles available</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="services.angelEyes.features.2">Quality LED systems</span></li>
+                        </ul>
+                        <a href="#gallery" class="service-link">
+                            <span data-i18n="services.viewGallery">View in Gallery</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 data-i18n="services.interiorDetailing.title">Interior Detailing</h3>
+                        <p data-i18n="services.interiorDetailing.description">Deep cleaning and restoration of your car's interior surfaces.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> <span data-i18n="services.interiorDetailing.features.0">Leather treatment</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="services.interiorDetailing.features.1">Carpet shampooing</span></li>
+                            <li><i class="fas fa-check"></i> <span data-i18n="services.interiorDetailing.features.2">Full sanitization</span></li>
+                        </ul>
+                        <a href="#gallery" class="service-link">
+                            <span data-i18n="services.viewGallery">View in Gallery</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="section-container">
+            <h2 data-i18n="gallery.title">Before & After Gallery</h2>
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all" data-i18n="gallery.filters.all">All</button>
+                <button class="filter-btn" data-filter="polish" data-i18n="gallery.filters.polish">Car Polish</button>
+                <button class="filter-btn" data-filter="headlights" data-i18n="gallery.filters.headlights">Headlights</button>
+                <button class="filter-btn" data-filter="interior" data-i18n="gallery.filters.interior">Interior</button>
+            </div>
+            <div class="gallery-grid">
+                <!-- Interior Examples -->
+                <div class="gallery-item" data-category="interior">
+                    <div class="before-after-slider">
+                        <div class="before-image">
+                            <svg class="placeholder-image" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100%" height="100%" fill="#2d2d2d"/>
+                                <g fill="#c0c0c0">
+                                    <rect x="100" y="150" width="600" height="300" rx="10"/>
+                                    <path d="M150 200 L650 200 M150 300 L650 300 M150 400 L650 400" stroke="#c0c0c0" stroke-width="20" fill="none"/>
+                                </g>
+                                <text x="50%" y="45%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="24">
+                                    Interior Door Panel
+                                </text>
+                                <text x="50%" y="55%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18">
+                                    Before Cleaning
+                                </text>
+                            </svg>
+                            <span class="label" data-i18n="gallery.labels.before">Before</span>
+                        </div>
+                        <div class="after-image">
+                            <svg class="placeholder-image" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100%" height="100%" fill="#1a1a1a"/>
+                                <g fill="#e8e8e8">
+                                    <rect x="100" y="150" width="600" height="300" rx="10"/>
+                                    <path d="M150 200 L650 200 M150 300 L650 300 M150 400 L650 400" stroke="#e8e8e8" stroke-width="20" fill="none"/>
+                                </g>
+                                <text x="50%" y="45%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="24">
+                                    Interior Door Panel
+                                </text>
+                                <text x="50%" y="55%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18">
+                                    After Cleaning
+                                </text>
+                            </svg>
+                            <span class="label" data-i18n="gallery.labels.after">After</span>
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                    <div class="gallery-item-info">
+                        <h4 data-i18n="gallery.items.interior1.title">Interior Door Panel Restoration</h4>
+                        <p data-i18n="gallery.items.interior1.description">Deep cleaning and restoration of door panels</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="interior">
+                    <div class="before-after-slider">
+                        <div class="before-image">
+                            <svg class="placeholder-image" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100%" height="100%" fill="#2d2d2d"/>
+                                <g fill="#c0c0c0">
+                                    <rect x="100" y="100" width="600" height="400" rx="10"/>
+                                    <circle cx="400" cy="300" r="150"/>
+                                </g>
+                                <text x="50%" y="45%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="24">
+                                    Interior Right Side
+                                </text>
+                                <text x="50%" y="55%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18">
+                                    Before Cleaning
+                                </text>
+                            </svg>
+                            <span class="label" data-i18n="gallery.labels.before">Before</span>
+                        </div>
+                        <div class="after-image">
+                            <svg class="placeholder-image" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100%" height="100%" fill="#1a1a1a"/>
+                                <g fill="#e8e8e8">
+                                    <rect x="100" y="100" width="600" height="400" rx="10"/>
+                                    <circle cx="400" cy="300" r="150"/>
+                                </g>
+                                <text x="50%" y="45%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="24">
+                                    Interior Right Side
+                                </text>
+                                <text x="50%" y="55%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18">
+                                    After Cleaning
+                                </text>
+                            </svg>
+                            <span class="label" data-i18n="gallery.labels.after">After</span>
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                    <div class="gallery-item-info">
+                        <h4 data-i18n="gallery.items.interior2.title">Interior Deep Cleaning</h4>
+                        <p data-i18n="gallery.items.interior2.description">Complete interior cleaning and restoration</p>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="interior">
+                    <div class="before-after-slider">
+                        <div class="before-image">
+                            <svg class="placeholder-image" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100%" height="100%" fill="#2d2d2d"/>
+                                <g fill="#c0c0c0">
+                                    <rect x="150" y="100" width="500" height="200" rx="10"/>
+                                    <rect x="150" y="350" width="500" height="150" rx="10"/>
+                                </g>
+                                <text x="50%" y="45%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="24">
+                                    Dashboard
+                                </text>
+                                <text x="50%" y="55%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18">
+                                    Before Cleaning
+                                </text>
+                            </svg>
+                            <span class="label" data-i18n="gallery.labels.before">Before</span>
+                        </div>
+                        <div class="after-image">
+                            <svg class="placeholder-image" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100%" height="100%" fill="#1a1a1a"/>
+                                <g fill="#e8e8e8">
+                                    <rect x="150" y="100" width="500" height="200" rx="10"/>
+                                    <rect x="150" y="350" width="500" height="150" rx="10"/>
+                                </g>
+                                <text x="50%" y="45%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="24">
+                                    Dashboard
+                                </text>
+                                <text x="50%" y="55%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18">
+                                    After Cleaning
+                                </text>
+                            </svg>
+                            <span class="label" data-i18n="gallery.labels.after">After</span>
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                    <div class="gallery-item-info">
+                        <h4 data-i18n="gallery.items.interior3.title">Dashboard Cleaning</h4>
+                        <p data-i18n="gallery.items.interior3.description">Deep cleaning and restoration of dashboard</p>
+                    </div>
+                </div>
+
+                <!-- Car Polish Examples -->
+                <div class="gallery-item" data-category="polish">
+                    <div class="before-after-slider">
+                        <div class="before-image">
+                            <svg class="placeholder-image" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100%" height="100%" fill="#2d2d2d"/>
+                                <g fill="#c0c0c0">
+                                    <circle cx="400" cy="250" r="100"/>
+                                    <path d="M250 350 Q 400 400 550 350 T 850 350" stroke="#c0c0c0" fill="none"/>
+                                </g>
+                                <text x="50%" y="45%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="24">
+                                    Scratched Paint
+                                </text>
+                                <text x="50%" y="55%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18">
+                                    Before Polish
+                                </text>
+                            </svg>
+                            <span class="label" data-i18n="gallery.labels.before">Before</span>
+                        </div>
+                        <div class="after-image">
+                            <svg class="placeholder-image" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100%" height="100%" fill="#1a1a1a"/>
+                                <g fill="#e8e8e8">
+                                    <circle cx="400" cy="250" r="100"/>
+                                    <path d="M250 350 Q 400 400 550 350 T 850 350" stroke="#e8e8e8" fill="none"/>
+                                </g>
+                                <text x="50%" y="45%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="24">
+                                    Shiny Paint
+                                </text>
+                                <text x="50%" y="55%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18">
+                                    After Polish
+                                </text>
+                            </svg>
+                            <span class="label" data-i18n="gallery.labels.after">After</span>
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                    <div class="gallery-item-info">
+                        <h4 data-i18n="gallery.items.bmw.title">BMW Paint Correction</h4>
+                        <p data-i18n="gallery.items.bmw.description">Full exterior polish with deep scratch removal</p>
+                    </div>
+                </div>
+
+                <!-- Headlights Examples -->
+                <div class="gallery-item" data-category="headlights">
+                    <div class="before-after-slider">
+                        <div class="before-image">
+                            <svg class="placeholder-image" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100%" height="100%" fill="#2d2d2d"/>
+                                <path d="M300,200 L500,200 A100,100 0 0,1 500,400 L300,400 A100,100 0 0,1 300,200" fill="#c0c0c0" opacity="0.5"/>
+                                <text x="50%" y="45%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="24">
+                                    Foggy Headlight
+                                </text>
+                                <text x="50%" y="55%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18">
+                                    Before Restoration
+                                </text>
+                            </svg>
+                            <span class="label" data-i18n="gallery.labels.before">Before</span>
+                        </div>
+                        <div class="after-image">
+                            <svg class="placeholder-image" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="100%" height="100%" fill="#1a1a1a"/>
+                                <path d="M300,200 L500,200 A100,100 0 0,1 500,400 L300,400 A100,100 0 0,1 300,200" fill="#e8e8e8"/>
+                                <text x="50%" y="45%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="24">
+                                    Clear Headlight
+                                </text>
+                                <text x="50%" y="55%" text-anchor="middle" fill="#fff" font-family="Arial" font-size="18">
+                                    After Restoration
+                                </text>
+                            </svg>
+                            <span class="label" data-i18n="gallery.labels.after">After</span>
+                        </div>
+                        <div class="slider-handle"></div>
+                    </div>
+                    <div class="gallery-item-info">
+                        <h4 data-i18n="gallery.items.mercedes.title">Mercedes Headlights Restoration</h4>
+                        <p data-i18n="gallery.items.mercedes.description">Complete restoration of oxidized headlights</p>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-cta">
+                <p data-i18n="gallery.cta.text">See more of our work on TikTok</p>
+                <a href="https://www.tiktok.com/@crazy_garage_en" class="social-cta" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                    <span data-i18n="gallery.cta.button">Follow Us on TikTok</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="section-container">
+            <h2 data-i18n="contact.title">Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="info-card hours-card">
+                        <i class="fas fa-clock"></i>
+                        <h3 data-i18n="contact.info.hours.title">Working Hours</h3>
+                        <p data-i18n="contact.info.hours.text">Contact us for<br>current availability</p>
+                    </div>
+                    <div class="info-card contact-card">
+                        <i class="fas fa-phone"></i>
+                        <h3 data-i18n="contact.info.phone.title">Contact Us</h3>
+                        <p data-i18n="contact.info.phone.text">+38976276666</p>
+                        <div class="contact-links">
+                            <a href="https://wa.me/38976276666" target="_blank" rel="noopener noreferrer" aria-label="Contact on WhatsApp" class="whatsapp-link">
+                                <i class="fab fa-whatsapp"></i>
+                                <span>WhatsApp</span>
+                            </a>
+                            <a href="tel:+38976276666" class="phone-link">
+                                <i class="fas fa-phone"></i>
+                                <span>Call Us</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2987.7041858493247!2d20.523869776029928!3d41.52236097162282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135111bf674dc7b7%3A0x494d6ce192f60c68!2sCrazy%20garage%20EN!5e0!3m2!1sen!2sus!4v1710351245140!5m2!1sen!2sus"
+                        width="100%"
+                        height="100%"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Crazy Garage Location">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <!-- Brand Section -->
+                <div class="footer-section brand">
+                    <h3>Crazy Garage</h3>
+                    <p data-i18n="footer.about"></p>
+                    <p class="motto" data-i18n="footer.motto"></p>
+                    <a href="mailto:email@gmail.com" class="footer-email" data-i18n="footer.email"></a>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="footer-section links">
+                    <h3 data-i18n="footer.links">Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="#services" data-i18n="nav.services">Services</a>
+                        <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+                        <a href="#contact" data-i18n="nav.contact">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Connect Section -->
+                <div class="footer-section connect">
+                    <h3 data-i18n="footer.connect">Connect</h3>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/crazy_garage_en" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" class="social-link instagram">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://www.facebook.com/people/Crazy-garage-en/100092218542079/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" class="social-link facebook">
+                            <i class="fab fa-facebook"></i>
+                            <span>Facebook</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright"></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- WhatsApp Contact Button -->
+    <a href="https://wa.me/38976276666" class="whatsapp-button" target="_blank" rel="noopener noreferrer" aria-label="Contact on WhatsApp">
+        <div class="whatsapp-icon">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+    </a>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-consent">
+        <div class="cookie-content">
+            <p data-i18n="cookies.message">We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="cookie-btn accept" data-i18n="cookies.accept">Accept</button>
+                <button id="decline-cookies" class="cookie-btn decline" data-i18n="cookies.decline">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="scripts/translations/en.js"></script>
+    <script src="scripts/translations/mk.js"></script>
+    <script src="scripts/translations/sq.js"></script>
+    <script src="scripts/i18n.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>
