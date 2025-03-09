@@ -181,7 +181,7 @@ export default function Contact() {
                       Our Location
                     </h3>
                     <p className="text-sm text-gray-300/90">
-                      Crazy Garage EN, Struga, North Macedonia
+                      Crazy Garage EN, Debar, North Macedonia
                     </p>
                   </div>
                 </div>
@@ -190,7 +190,7 @@ export default function Contact() {
               {/* Map Container */}
               <div className="absolute top-[72px] left-0 right-0 bottom-0">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2987.7041858493247!2d20.523869776029928!3d41.52236097162282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x135111bf674dc7b7%3A0x494d6ce192f60c68!2sCrazy%20garage%20EN!5e0!3m2!1sen!2sus!4v1710351245140!5m2!1sen!2sus"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2991.0649377950847!2d20.52340267602775!3d41.52236097162282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1351115b5f4d4d4d%3A0x4b4d4d4d4d4d4d4d!2sCrazy%20Garage%20EN!5e0!3m2!1sen!2smk!4v1710351245140!5m2!1sen!2smk"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
