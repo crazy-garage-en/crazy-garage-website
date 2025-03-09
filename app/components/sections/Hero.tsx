@@ -15,11 +15,12 @@ export default function Hero() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero/hero-section.webp"
+          src="/crazy-garage-website/images/hero/hero-section.webp"
           alt="Crazy Garage Hero Background"
           fill
           className="object-cover"
           priority
+          sizes="100vw"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40" />
       </div>
