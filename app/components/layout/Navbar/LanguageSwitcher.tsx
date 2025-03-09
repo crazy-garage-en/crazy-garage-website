@@ -5,21 +5,24 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+const basePath =
+  process.env.NODE_ENV === 'production' ? '/crazy-garage-website' : '';
+
 const languages = [
   {
     code: 'en',
     name: 'English',
-    flag: '/crazy-garage-website/images/flags/en.webp',
+    flag: `${basePath}/images/flags/en.webp`,
   },
   {
     code: 'mk',
     name: 'Македонски',
-    flag: '/crazy-garage-website/images/flags/mk.png',
+    flag: `${basePath}/images/flags/mk.png`,
   },
   {
     code: 'sq',
     name: 'Shqip',
-    flag: '/crazy-garage-website/images/flags/al.jpg',
+    flag: `${basePath}/images/flags/al.jpg`,
   },
 ] as const;
 
@@ -94,7 +97,7 @@ export default function LanguageSwitcher() {
           {languages.map((lang) => (
             <Link
               key={lang.code}
-              href={`/crazy-garage-website/${lang.code}`}
+              href={`${basePath}/${lang.code}`}
               className={`flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 transition-colors ${
                 currentLang === lang.code ? 'bg-white/5' : ''
               }`}
