@@ -1,0 +1,100 @@
+{
+  "navigation": {
+    "home": "Ballina",
+    "services": "Shërbimet",
+    "gallery": "Galeria",
+    "contact": "Kontakti"
+  },
+  "hero": {
+    "title": "Kthejeni shkëlqimin e automjetit tuaj!",
+    "description": "Përjetoni shërbime premium të pastrimit të detajuar të makinave dhe restaurimit të dritave që do të transformojnë pamjen e automjetit tuaj",
+    "buttons": {
+      "polish": "Lustroni makinën tuaj",
+      "gallery": "Shikoni punën tonë"
+    }
+  },
+  "services": {
+    "title": "Shërbimet Tona",
+    "description": "Shërbime profesionale të pastrimit të detajuar të makinave të përshtatura për nevojat tuaja",
+    "items": {
+      "polish": {
+        "title": "Lustrimi i Ngjyrës",
+        "description": "Korrigjim dhe lustrim profesional i ngjyrës",
+        "features": [
+          "Korrigjim i avancuar i ngjyrës",
+          "Heqje e plotë e shenjave",
+          "Shkëlqim i thellë afatgjatë"
+        ]
+      },
+      "headlights": {
+        "title": "Lustrimi i Dritave",
+        "description": "Përmirësoni dukshmërinë dhe estetikën me shërbimin tonë të specializuar të lustrimit të dritave",
+        "features": [
+          "Shtresë rezistente ndaj UV",
+          "Heqje e oksidimit",
+          "Përfundim kristal i pastër"
+        ]
+      },
+      "restoration": {
+        "title": "Restaurimi i Dritave",
+        "description": "Kthejuni jetë dritave tuaja me shërbimin tonë gjithëpërfshirës të restaurimit",
+        "features": [
+          "Restaurim i thellë",
+          "Shtresë mbrojtëse",
+          "Rezultate si të reja"
+        ]
+      },
+      "angel": {
+        "title": "Montimi i Syve të Engjëllit",
+        "description": "Përmirësoni pamjen e automjetit tuaj me instalimin tonë premium të syve të engjëllit",
+        "features": [
+          "Instalim ekspert",
+          "Sisteme LED premium",
+          "Opsione të personalizuara"
+        ]
+      },
+      "interior": {
+        "title": "Pastrim i Detajuar i Brendshëm",
+        "description": "Përjetoni kulmin e kujdesit për brendësinë e makinës me shërbimin tonë gjithëpërfshirës",
+        "features": [
+          "Kujdes premium për lëkurën",
+          "Pastrim i thellë i pëlhurave",
+          "Sanitizim i plotë"
+        ]
+      }
+    }
+  },
+  "gallery": {
+    "title": "Transformimet e Spikatura",
+    "description": "Dëshmoni rezultatet e jashtëzakonshme të shërbimeve tona profesionale",
+    "viewMore": "Shikoni Galerinë e Plotë",
+    "explore": "Eksploroni koleksionin tonë të plotë të transformimeve",
+    "items": {
+      "doorPanel": {
+        "title": "Paneli i Brendshëm i Derës",
+        "description": "Restaurim profesional dhe pastrim i thellë i brendshëm"
+      },
+      "sidePanel": {
+        "title": "Paneli Anësor i Brendshëm",
+        "description": "Pastrim i plotë i detajuar dhe restaurim i sipërfaqes"
+      },
+      "surface": {
+        "title": "Trajtimi i Sipërfaqes",
+        "description": "Pastrim dhe mbrojtje profesionale e sipërfaqes"
+      }
+    },
+    "comparison": {
+      "before": "Para",
+      "after": "Pas",
+      "dragToCompare": "Tërhiqni për të krahasuar"
+    }
+  },
+  "contact": {
+    "title": "Na Kontaktoni",
+    "description": "Rezervoni takimin tuaj ose na pyesni çfarëdo"
+  },
+  "footer": {
+    "rights": "Të gjitha të drejtat e rezervuara",
+    "followUs": "Na Ndiqni"
+  }
+}
