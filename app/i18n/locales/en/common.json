@@ -1,0 +1,100 @@
+{
+  "navigation": {
+    "home": "Home",
+    "services": "Services",
+    "gallery": "Gallery",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Transform your car's look with our professional detailing services",
+    "description": "Experience premium car detailing and headlight restoration services that will transform your vehicle's appearance",
+    "buttons": {
+      "polish": "Get Your Car Polished",
+      "gallery": "View Our Work"
+    }
+  },
+  "services": {
+    "title": "Our Services",
+    "description": "Experience premium car detailing services that will transform your vehicle's appearance",
+    "items": {
+      "polish": {
+        "title": "Car Polish",
+        "description": "Transform your vehicle with our professional exterior polishing and paint correction service, delivering a flawless, showroom-worthy finish.",
+        "features": [
+          "Advanced paint correction",
+          "Complete swirl removal",
+          "Long-lasting deep shine"
+        ]
+      },
+      "headlights": {
+        "title": "Headlights Polish",
+        "description": "Enhance visibility and aesthetics with our specialized headlight polishing service, restoring clarity and brightness to clouded lenses.",
+        "features": [
+          "UV-resistant coating",
+          "Oxidation removal",
+          "Crystal clear finish"
+        ]
+      },
+      "restoration": {
+        "title": "Headlights Restoration",
+        "description": "Give your headlights new life with our comprehensive restoration service, perfect for severely damaged or oxidized lenses.",
+        "features": [
+          "Deep surface restoration",
+          "Protective sealant",
+          "Like-new results"
+        ]
+      },
+      "angel": {
+        "title": "Angel Eyes Mount",
+        "description": "Upgrade your vehicle's appearance with our premium angel eyes installation, creating a distinctive and modern lighting signature.",
+        "features": [
+          "Expert installation",
+          "Premium LED systems",
+          "Custom styling options"
+        ]
+      },
+      "interior": {
+        "title": "Interior Detailing",
+        "description": "Experience the ultimate in interior car care with our comprehensive detailing service, restoring every surface to pristine condition.",
+        "features": [
+          "Premium leather care",
+          "Deep fabric cleaning",
+          "Complete sanitization"
+        ]
+      }
+    }
+  },
+  "gallery": {
+    "title": "Featured Transformations",
+    "description": "Witness the remarkable results of our professional detailing services",
+    "viewMore": "View Full Gallery",
+    "explore": "Explore our complete collection of transformations",
+    "items": {
+      "doorPanel": {
+        "title": "Interior Door Panel",
+        "description": "Professional interior restoration and deep cleaning"
+      },
+      "sidePanel": {
+        "title": "Interior Side Panel",
+        "description": "Complete interior detailing and surface restoration"
+      },
+      "surface": {
+        "title": "Surface Treatment",
+        "description": "Professional surface cleaning and protection"
+      }
+    },
+    "comparison": {
+      "before": "Before",
+      "after": "After",
+      "dragToCompare": "Drag to compare"
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "description": "Book your appointment or ask us anything"
+  },
+  "footer": {
+    "rights": "All rights reserved",
+    "followUs": "Follow Us"
+  }
+}
