@@ -96,5 +96,11 @@
   "footer": {
     "rights": "Të gjitha të drejtat e rezervuara",
     "followUs": "Na Ndiqni"
+  },
+  "language": {
+    "select": "Zgjidhni gjuhën",
+    "en": "Anglisht",
+    "mk": "Maqedonisht",
+    "sq": "Shqip"
   }
 }
