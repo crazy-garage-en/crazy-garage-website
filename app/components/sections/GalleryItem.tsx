@@ -22,32 +22,49 @@ export default function GalleryItem({
   delay,
 }: GalleryItemProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const [showHint, setShowHint] = useState(true);
-  const [isLoaded, setIsLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Memoize the slider change handler
-  const handleSliderChange = useCallback((clientX: number) => {
-    if (!containerRef.current) return;
+  const handleMove = useCallback(
+    (event: MouseEvent | TouchEvent) => {
+      if (!isDragging || !containerRef.current) return;
 
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
-    const percentage = (x / rect.width) * 100;
+      const container = containerRef.current;
+      const rect = container.getBoundingClientRect();
+      
+      const clientX = 'touches' in event 
+        ? event.touches[0].clientX 
+        : event.clientX;
+      
+      const position = ((clientX - rect.left) / rect.width) * 100;
+      const clampedPosition = Math.min(Math.max(position, 0), 100);
+      
+      setSliderPosition(clampedPosition);
+    },
+    [isDragging]
+  );
 
-    // Use RAF for smooth animation
-    requestAnimationFrame(() => {
-      setSliderPosition(Math.max(0, Math.min(percentage, 100)));
-    });
-  }, []);
+  const handleMouseDown = () => setIsDragging(true);
+  const handleMouseUp = () => setIsDragging(false);
 
-  // Optimize scroll prevention
   useEffect(() => {
-    if (!isDragging) return;
-    document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = ''; };
-  }, [isDragging]);
+    if (isDragging) {
+      window.addEventListener('mousemove', handleMove);
+      window.addEventListener('touchmove', handleMove);
+      window.addEventListener('mouseup', handleMouseUp);
+      window.addEventListener('touchend', handleMouseUp);
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', handleMove);
+      window.removeEventListener('touchmove', handleMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+      window.removeEventListener('touchend', handleMouseUp);
+    };
+  }, [isDragging, handleMove]);
 
   // Optimize hint timer
   useEffect(() => {
@@ -56,37 +73,11 @@ export default function GalleryItem({
     return () => clearTimeout(timer);
   }, [showHint]);
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    setIsDragging(true);
-    handleSliderChange(e.clientX);
-    setShowHint(false);
-  };
-
-  const handleMouseUp = () => setIsDragging(false);
   const handleMouseLeave = () => {
     setIsDragging(false);
     setIsHovered(false);
   };
   const handleMouseEnter = () => setIsHovered(true);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDragging) return;
-    handleSliderChange(e.clientX);
-  };
-
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    const touch = e.touches[0];
-    setIsDragging(true);
-    handleSliderChange(touch.clientX);
-    setShowHint(false);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (!isDragging) return;
-    const touch = e.touches[0];
-    handleSliderChange(touch.clientX);
-  };
 
   return (
     <motion.div
@@ -99,15 +90,11 @@ export default function GalleryItem({
       {/* Before/After Slider Container */}
       <div
         ref={containerRef}
-        className="relative w-full aspect-[4/3] select-none touch-none cursor-ew-resize bg-secondary/50"
+        className="relative w-full aspect-[4/3] select-none touch-none cursor-col-resize bg-secondary/50"
         onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
+        onTouchStart={handleMouseDown}
         onMouseLeave={handleMouseLeave}
         onMouseEnter={handleMouseEnter}
-        onMouseMove={handleMouseMove}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleMouseUp}
       >
         {/* Loading State */}
         {!isLoaded && (
@@ -134,8 +121,11 @@ export default function GalleryItem({
 
         {/* Before Image (Overlay) */}
         <div
-          className="absolute inset-0 overflow-hidden will-change-[width]"
-          style={{ width: `${sliderPosition}%` }}
+          className="absolute inset-0 overflow-hidden"
+          style={{
+            clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
+            WebkitClipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
+          }}
         >
           <div className="absolute inset-0">
             <Image
@@ -162,10 +152,8 @@ export default function GalleryItem({
         >
           {/* Slider Handle */}
           <div
-            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full shadow-xl flex items-center justify-center transition-colors duration-200 ${
-              isDragging
-                ? 'bg-accent shadow-accent/20'
-                : 'bg-white hover:bg-accent/5'
+            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full shadow-xl flex items-center justify-center bg-white/90 transition-colors duration-200 ${
+              isDragging ? 'bg-accent' : 'hover:bg-accent/10'
             }`}
           >
             <FontAwesomeIcon
