@@ -17,7 +17,8 @@ i18next
     lng: undefined, // let detect the language on client side
     detection: {
       order: ['path', 'htmlTag', 'cookie', 'navigator'],
-    }
+    },
+    preload: typeof window !== 'undefined' ? [] : getOptions().supportedLngs,
   })
 
 export default i18next

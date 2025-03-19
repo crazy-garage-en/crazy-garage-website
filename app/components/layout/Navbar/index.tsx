@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
 import '../../../i18n/client';
-import LanguageSwitcher from './LanguageSwitcher';
+import LanguageSwitcher from '@/app/components/ui/LanguageSwitcher';
 import { usePathname } from 'next/navigation';
 
 export default function Navbar() {

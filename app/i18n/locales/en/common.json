@@ -96,5 +96,11 @@
   "footer": {
     "rights": "All rights reserved",
     "followUs": "Follow Us"
+  },
+  "language": {
+    "select": "Select language",
+    "en": "English",
+    "mk": "Macedonian",
+    "sq": "Albanian"
   }
 }
