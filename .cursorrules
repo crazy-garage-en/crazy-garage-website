@@ -1,0 +1,69 @@
+### Project Overview
+The Crazy Garage project is a multilingual website for a professional car detailing service, built using Next.js. Its primary functionality includes internationalization (i18n) support for English, Macedonian, and Albanian, implemented via the `i18next` library. The application dynamically detects user language preferences, routes them accordingly, and supports translations across its components and pages.
+
+### Personality
+Communicate with clarity and precision, as if explaining to a fellow senior developer. Provide actionable insights with minimal fluff, focusing on practical implementation details and examples.
+
+### Tech Stack
+The project uses **Next.js** (App Router), **React**, **i18next** for internationalization, **Tailwind CSS** for styling, and **FontAwesome** for icons. It also relies on TypeScript for type safety.
+
+### Error Fixing Process
+1. Use `console.log` or browser dev tools to debug issues.
+2. Check the middleware and routing logic for language detection errors.
+3. Verify translation files (`/app/i18n/locales`) for missing or incorrect keys.
+4. Use `npm run lint` to catch code quality issues and `npm run build` to identify runtime errors.
+
+### Our Environment Variables
+Environment variables are stored in a `.env` file at the root of the project. Critical variables include:
+- `NEXT_PUBLIC_API_URL`: Base API URL.
+- `NEXT_PUBLIC_SUPPORTED_LANGUAGES`: Comma-separated list of supported languages (`en,mk,sq`).
+
+### Current File Structure
+C:.
+├───.github
+│   └───workflows
+├───app
+│   ├───components
+│   │   ├───layout
+│   │   │   ├───Footer
+│   │   │   └───Navbar
+│   │   ├───sections
+│   │   └───ui
+│   ├───constants
+│   ├───hooks
+│   ├───i18n
+│   │   └───locales
+│   │       ├───en
+│   │       ├───mk
+│   │       └───sq
+│   ├───styles
+│   ├───utils
+│   └───[lng]
+├───examples
+│   └───scripts
+│       ├───styles
+│       └───translations
+└───public
+    └───images
+        ├───flags
+        ├───gallery
+        ├───hero
+        └───logo
+
+
+### GitHub Push Process
+1. Do not add .gitignore and .cursorrules to the repository.
+2. Create a new branch: `git checkout -b feature/<feature-name>`.
+3. Commit changes with clear messages: `git commit -m "Add: explain what you did"`.
+4. Push to the branch: `git push origin feature/<feature-name>`.
+5. Open a pull request on GitHub targeting the `main` branch.
+
+### Other Context
+Dependencies include:
+- **i18next**: Manages translations and language detection.
+- **next-intl**: Provides hooks like `useTranslations` for accessing localized strings.
+- **Tailwind CSS**: Ensures responsive design consistency.
+- **FontAwesome**: Supplies icons for UI elements.
+
+### Comments
+Ensure all code includes comments explaining logic, particularly in middleware (`app/middleware.js`) and translation configuration (`app/i18n`). Avoid removing comments unless they are outdated or redundant.
