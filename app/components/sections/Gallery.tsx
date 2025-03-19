@@ -146,19 +146,20 @@ const GalleryItem = ({
                 {/* Before Image (Overlay) */}
                 <div
                     className="absolute inset-0 overflow-hidden"
-                    style={{ width: `${sliderPosition}%` }}
+                    style={{
+                        clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
+                        WebkitClipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
+                    }}
                 >
-                    <div className="absolute inset-0">
-                        <Image
-                            src={beforeImage}
-                            alt={t(`gallery.items.${itemKey}.title`) + ' - ' + t('gallery.comparison.before')}
-                            fill
-                            className={`object-cover transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
-                            quality={100}
-                            priority
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
-                    </div>
+                    <Image
+                        src={beforeImage}
+                        alt={t(`gallery.items.${itemKey}.title`) + ' - ' + t('gallery.comparison.before')}
+                        fill
+                        className={`object-cover transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+                        quality={100}
+                        priority
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
                 </div>
 
                 {/* Slider Line */}
