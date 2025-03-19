@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -23,7 +23,8 @@ interface ServiceCardProps {
     delay: number;
 }
 
-const ServiceCard = ({
+// Memoize ServiceCard for better performance
+const ServiceCard = memo(({
     icon,
     title,
     description,
@@ -36,40 +37,34 @@ const ServiceCard = ({
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ duration: 0.7, delay: delay * 0.15, ease: 'easeOut' }}
-            className="group relative bg-secondary/30 backdrop-blur-xl rounded-2xl p-8 hover:bg-secondary/40 transition-all duration-500 border border-white/5 shadow-lg"
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.3, delay: delay * 0.1 }}
+            className="group relative bg-secondary/30 backdrop-blur-xl rounded-2xl p-8 hover:bg-secondary/40 transition-all duration-300 border border-white/5 shadow-lg"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
             {/* Gradient overlay */}
-            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-            <div className="relative flex flex-col h-full z-10">
-                <div className="flex items-start gap-5 mb-6">
-                    <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center transform-gpu transition-all duration-500 group-hover:scale-110 group-hover:bg-accent/15 group-hover:shadow-lg group-hover:shadow-accent/5">
-                        <FontAwesomeIcon
-                            icon={icon}
-                            className="text-accent text-2xl transition-all duration-500 group-hover:scale-110"
-                        />
-                    </div>
-                    <h3 className="text-2xl font-bold text-white tracking-tight py-2">
-                        {title}
-                    </h3>
+            <div className="relative">
+                {/* Icon */}
+                <div className="w-16 h-16 rounded-xl bg-accent/10 flex items-center justify-center mb-6 transform transition-transform duration-300 group-hover:scale-110">
+                    <FontAwesomeIcon icon={icon} className="text-2xl text-accent" />
                 </div>
 
-                <p className="text-gray-300/90 mb-8 text-lg leading-relaxed">
-                    {description}
-                </p>
+                {/* Content */}
+                <h3 className="text-2xl font-bold text-white mb-4">{title}</h3>
+                <p className="text-gray-300/90 mb-8">{description}</p>
 
+                {/* Features */}
                 <ul className="space-y-4 mb-8 flex-grow">
                     {features.map((feature, index) => (
                         <motion.li
                             key={index}
-                            initial={{ opacity: 0, x: -20 }}
+                            initial={{ opacity: 0, x: -10 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: delay * 0.15 + index * 0.1 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.2, delay: delay * 0.1 + index * 0.05 }}
                             className="flex items-center gap-4 text-gray-300/90"
                         >
                             <div className="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center transform transition-transform duration-300 group-hover:scale-110">
@@ -86,18 +81,21 @@ const ServiceCard = ({
                 <motion.a
                     href="#gallery"
                     className="inline-flex items-center gap-3 text-accent hover:text-white transition-all duration-300 group/link mt-auto text-lg font-medium"
-                    whileHover={{ x: 8 }}
+                    whileHover={{ x: 4 }}
+                    transition={{ duration: 0.2 }}
                 >
                     <span>View in Gallery</span>
                     <FontAwesomeIcon
                         icon={faArrowRight}
-                        className="text-sm transition-all duration-300 group-hover/link:translate-x-2"
+                        className="text-sm transition-all duration-300 group-hover/link:translate-x-1"
                     />
                 </motion.a>
             </div>
         </motion.div>
     );
-};
+});
+
+ServiceCard.displayName = 'ServiceCard';
 
 export default function Services({ lng }: { lng: string }) {
     const { t } = useTranslation('common', { lng });
@@ -148,8 +146,8 @@ export default function Services({ lng }: { lng: string }) {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.3 }}
                     className="text-center mb-16 lg:mb-24"
                 >
                     <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">

@@ -28,28 +28,7 @@ export default function GalleryItem({
   const [isLoaded, setIsLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Hide the hint after 3 seconds
-  useEffect(() => {
-    if (showHint) {
-      const timer = setTimeout(() => setShowHint(false), 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [showHint]);
-
-  // Prevent scrolling when dragging
-  useEffect(() => {
-    if (!isDragging) return;
-
-    const preventScroll = (e: TouchEvent) => e.preventDefault();
-    document.addEventListener('touchmove', preventScroll, { passive: false });
-    document.body.style.overflow = 'hidden';
-
-    return () => {
-      document.removeEventListener('touchmove', preventScroll);
-      document.body.style.overflow = '';
-    };
-  }, [isDragging]);
-
+  // Memoize the slider change handler
   const handleSliderChange = useCallback((clientX: number) => {
     if (!containerRef.current) return;
 
@@ -57,10 +36,25 @@ export default function GalleryItem({
     const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
     const percentage = (x / rect.width) * 100;
 
+    // Use RAF for smooth animation
     requestAnimationFrame(() => {
       setSliderPosition(Math.max(0, Math.min(percentage, 100)));
     });
   }, []);
+
+  // Optimize scroll prevention
+  useEffect(() => {
+    if (!isDragging) return;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = ''; };
+  }, [isDragging]);
+
+  // Optimize hint timer
+  useEffect(() => {
+    if (!showHint) return;
+    const timer = setTimeout(() => setShowHint(false), 3000);
+    return () => clearTimeout(timer);
+  }, [showHint]);
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
@@ -98,8 +92,8 @@ export default function GalleryItem({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: delay * 0.2 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.3, delay: delay * 0.1 }}
       className="group relative bg-secondary/30 backdrop-blur-xl rounded-2xl overflow-hidden border border-white/5 shadow-lg"
     >
       {/* Before/After Slider Container */}
@@ -128,11 +122,11 @@ export default function GalleryItem({
             src={afterImage}
             alt={`${title} - After`}
             fill
-            className={`object-cover transition-opacity duration-500 ${
+            className={`object-cover transition-opacity duration-300 ${
               isLoaded ? 'opacity-100' : 'opacity-0'
             }`}
-            quality={100}
-            priority
+            quality={75}
+            loading="lazy"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             onLoadingComplete={() => setIsLoaded(true)}
           />
@@ -140,7 +134,7 @@ export default function GalleryItem({
 
         {/* Before Image (Overlay) */}
         <div
-          className="absolute inset-0 overflow-hidden"
+          className="absolute inset-0 overflow-hidden will-change-[width]"
           style={{ width: `${sliderPosition}%` }}
         >
           <div className="absolute inset-0">
@@ -148,11 +142,11 @@ export default function GalleryItem({
               src={beforeImage}
               alt={`${title} - Before`}
               fill
-              className={`object-cover transition-opacity duration-500 ${
+              className={`object-cover transition-opacity duration-300 ${
                 isLoaded ? 'opacity-100' : 'opacity-0'
               }`}
-              quality={100}
-              priority
+              quality={75}
+              loading="lazy"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           </div>
@@ -160,7 +154,7 @@ export default function GalleryItem({
 
         {/* Slider Line */}
         <div
-          className="absolute top-0 bottom-0 w-[2px] bg-white/80 backdrop-blur-sm"
+          className="absolute top-0 bottom-0 w-[2px] bg-white/80 backdrop-blur-sm will-change-transform"
           style={{
             left: `${sliderPosition}%`,
             transform: 'translateX(-50%)',
@@ -184,22 +178,22 @@ export default function GalleryItem({
         </div>
 
         {/* Labels */}
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {(isHovered || isDragging) && (
             <>
               <motion.div
-                initial={{ opacity: 0, y: -10 }}
+                initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
+                exit={{ opacity: 0, y: -5 }}
                 transition={{ duration: 0.2 }}
                 className="absolute top-4 left-4 px-4 py-2 bg-black/60 backdrop-blur-md rounded-xl text-sm font-medium text-white"
               >
                 Before
               </motion.div>
               <motion.div
-                initial={{ opacity: 0, y: -10 }}
+                initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
+                exit={{ opacity: 0, y: -5 }}
                 transition={{ duration: 0.2 }}
                 className="absolute top-4 right-4 px-4 py-2 bg-black/60 backdrop-blur-md rounded-xl text-sm font-medium text-white"
               >
@@ -210,13 +204,13 @@ export default function GalleryItem({
         </AnimatePresence>
 
         {/* Drag Hint */}
-        <AnimatePresence>
+        <AnimatePresence mode="wait">
           {showHint && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 px-6 py-3 bg-black/70 backdrop-blur-xl rounded-2xl text-white font-medium shadow-2xl flex items-center gap-3"
             >
               <FontAwesomeIcon icon={faArrowsLeftRight} className="text-lg" />

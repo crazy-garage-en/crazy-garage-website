@@ -9,6 +9,10 @@ const nextConfig = {
                 hostname: 'cdnjs.cloudflare.com',
             },
         ],
+        formats: ['image/avif', 'image/webp'],
+        deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+        imageSizes: [16, 32, 48, 64, 96, 128, 256],
+        minimumCacheTTL: 60,
     },
     typescript: {
         ignoreBuildErrors: true, // Temporarily ignore TS errors to test if this is the issue
@@ -26,6 +30,15 @@ const nextConfig = {
             },
         ];
     },
+    experimental: {
+        optimizeCss: true,
+        optimizePackageImports: ['@fortawesome/free-solid-svg-icons'],
+    },
+    compiler: {
+        removeConsole: process.env.NODE_ENV === 'production',
+    },
+    swcMinify: true,
+    poweredByHeader: false,
 }
 
 module.exports = nextConfig
