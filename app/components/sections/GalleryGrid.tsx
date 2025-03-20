@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilter } from '@fortawesome/free-solid-svg-icons';
 import GalleryItem from './GalleryItem';
+import { useTranslation } from 'react-i18next';
+import '../../i18n/client';
 
 // Gallery items data
 const galleryItems = [
@@ -43,9 +45,14 @@ const categories = [
   { id: 'headlights', label: 'Headlights' },
 ];
 
-export default function GalleryGrid() {
+interface GalleryGridProps {
+  lng: string;
+}
+
+export default function GalleryGrid({ lng }: GalleryGridProps) {
   const [activeCategory, setActiveCategory] = useState('all');
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const { t } = useTranslation('common', { lng });
 
   const filteredItems =
     activeCategory === 'all'
@@ -131,6 +138,7 @@ export default function GalleryGrid() {
             beforeImage={item.beforeImage}
             afterImage={item.afterImage}
             delay={index}
+            lng={lng}
           />
         ))}
       </div>
