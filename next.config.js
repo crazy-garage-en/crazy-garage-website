@@ -21,7 +21,7 @@ const nextConfig = {
     // Configure static file serving
     trailingSlash: true,
     // Ensure static assets are handled correctly
-    assetPrefix: process.env.NODE_ENV === 'production' ? '.' : '',
+    assetPrefix: process.env.NODE_ENV === 'production' ? '/' : '',
     // Disable experimental features
     experimental: {
         optimizePackageImports: ['@fortawesome/free-solid-svg-icons'],
