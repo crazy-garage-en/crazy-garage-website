@@ -22,10 +22,12 @@ const nextConfig = {
     trailingSlash: true,
     // Ensure static assets are handled correctly
     assetPrefix: process.env.NODE_ENV === 'production' ? '.' : '',
+    // Disable experimental features
     experimental: {
-        optimizeCss: true,
         optimizePackageImports: ['@fortawesome/free-solid-svg-icons'],
     },
+    // Disable CSS optimization
+    optimizeFonts: false,
     compiler: {
         removeConsole: process.env.NODE_ENV === 'production',
     },
