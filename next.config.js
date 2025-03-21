@@ -16,25 +16,18 @@ const nextConfig = {
         minimumCacheTTL: 60,
     },
     typescript: {
-        ignoreBuildErrors: true, // Temporarily ignore TS errors to test if this is the issue
+        ignoreBuildErrors: true,
     },
-    // Add assetPrefix to handle images correctly with language paths
-    assetPrefix: '',
-    // Configure base path for static assets
-    basePath: '',
-    // Add rewrites to handle image paths correctly
-    async rewrites() {
-        return [
-            {
-                source: '/:lng/images/:path*',
-                destination: '/images/:path*',
-            },
-        ];
-    },
+    // Configure static file serving
+    trailingSlash: true,
+    // Ensure static assets are handled correctly
+    assetPrefix: process.env.NODE_ENV === 'production' ? '.' : '',
+    // Disable experimental features
     experimental: {
-        optimizeCss: true,
         optimizePackageImports: ['@fortawesome/free-solid-svg-icons'],
     },
+    // Disable CSS optimization
+    optimizeFonts: false,
     compiler: {
         removeConsole: process.env.NODE_ENV === 'production',
     },
