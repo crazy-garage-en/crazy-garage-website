@@ -30,7 +30,7 @@ export default function LanguageSwitcher() {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
-    const currentLang = pathname?.split('/')[1] || 'en';
+    const currentLang = pathname?.split('/')[2] || 'en';
     const { i18n } = useTranslation('common', { lng: currentLang });
     const currentLanguage = languages.find((lang) => lang.code === currentLang) || languages[0];
 
@@ -52,7 +52,7 @@ export default function LanguageSwitcher() {
 
     const getLanguagePath = (langCode: string) => {
         // Get the path after the language code
-        const pathParts = pathname?.split('/').slice(2) || [];
+        const pathParts = pathname?.split('/').slice(3) || [];
         return getPath(`/${langCode}${pathParts.length ? '/' + pathParts.join('/') : ''}`);
     };
 

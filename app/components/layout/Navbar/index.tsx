@@ -11,7 +11,7 @@ import { usePathname } from 'next/navigation';
 export default function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const pathname = usePathname();
-    const lng = pathname.split('/')[1] || 'en';
+    const lng = pathname?.split('/')[1] || 'en';
     const { t } = useTranslation('common', { lng });
 
     const navigationItems = ['services', 'gallery', 'contact'];
@@ -22,10 +22,10 @@ export default function Navbar() {
                 <div className="flex items-center justify-between h-20">
                     {/* Logo */}
                     <div className="flex-shrink-0 transition-transform duration-300 hover:scale-105">
-                        <Link href={`/${lng}`} className="block">
+                        <Link href={`/crazy-garage-website/${lng}`} className="block">
                             <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-accent/10">
                                 <Image
-                                    src="/images/logo/logo.jpg"
+                                    src="/crazy-garage-website/images/logo/logo.jpg"
                                     alt="Crazy Garage Logo"
                                     fill
                                     className="object-cover"
@@ -41,7 +41,7 @@ export default function Navbar() {
                         {navigationItems.map((item) => (
                             <Link
                                 key={item}
-                                href={`#${item}`}
+                                href={`/crazy-garage-website/${lng}#${item}`}
                                 className="group relative px-2 py-1 text-[#e8e8e8] hover:text-white transition-colors uppercase text-sm tracking-wider font-medium"
                             >
                                 <span>{t(`navigation.${item}`)}</span>
@@ -83,7 +83,7 @@ export default function Navbar() {
                         {navigationItems.map((item) => (
                             <Link
                                 key={item}
-                                href={`#${item}`}
+                                href={`/crazy-garage-website/${lng}#${item}`}
                                 className="block px-4 py-2 text-[#e8e8e8] hover:text-white hover:bg-white/5 transition-colors rounded-lg uppercase text-sm tracking-wider font-medium"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
