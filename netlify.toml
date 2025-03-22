@@ -3,6 +3,33 @@
   publish = "out"
 
 [[redirects]]
+  from = "/"
+  to = "/en"
+  status = 302
+  force = true
+  conditions = {Language = ["en"]}
+
+[[redirects]]
+  from = "/"
+  to = "/mk"
+  status = 302
+  force = true
+  conditions = {Language = ["mk"]}
+
+[[redirects]]
+  from = "/"
+  to = "/sq"
+  status = 302
+  force = true
+  conditions = {Language = ["sq"]}
+
+[[redirects]]
+  from = "/"
+  to = "/en"
+  status = 302
+  force = true
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

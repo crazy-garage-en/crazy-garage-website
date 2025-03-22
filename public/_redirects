@@ -1,1 +1,13 @@
-/*    /index.html   200 
+# Language fallback
+/   /en/   302  Country=mk
+/   /mk/   302  Country=mk
+/   /sq/   302  Country=al
+/   /en/   302
+
+# Handle all routes
+/en/*   /en/:splat   200
+/mk/*   /mk/:splat   200
+/sq/*   /sq/:splat   200
+
+# SPA fallback
+/*  /index.html  200 
