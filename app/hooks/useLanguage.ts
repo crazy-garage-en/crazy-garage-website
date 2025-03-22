@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export interface LanguageOption {
   code: string;
@@ -8,52 +9,48 @@ export interface LanguageOption {
   flag: string;
 }
 
-export const languageOptions: LanguageOption[] = [
+const languageOptions = [
   {
     code: 'en',
     name: 'English',
     nativeName: 'English',
-    flag: '/images/flags/en.webp'
+    flag: '/crazy-garage-website/images/flags/en.webp'
   },
   {
     code: 'mk',
-    name: 'Macedonian',
+    name: 'Македонски',
     nativeName: 'Македонски',
-    flag: '/images/flags/mk.png'
+    flag: '/crazy-garage-website/images/flags/mk.png'
   },
   {
     code: 'sq',
-    name: 'Albanian',
+    name: 'Shqip',
     nativeName: 'Shqip',
-    flag: '/images/flags/al.jpg'
+    flag: '/crazy-garage-website/images/flags/al.jpg'
   }
 ];
 
 export function useLanguage() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [currentLang, setCurrentLang] = useState('en');
   const router = useRouter();
   const pathname = usePathname();
+  const currentLang = pathname?.split('/')[2] || 'en';
+  const currentLanguage = languageOptions.find((lang) => lang.code === currentLang) || languageOptions[0];
+  const { i18n } = useTranslation();
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    // Extract language from pathname (format: /[lang]/rest/of/path)
-    const pathLang = pathname.split('/')[1];
-    if (languageOptions.some(lang => lang.code === pathLang)) {
-      setCurrentLang(pathLang);
-    }
-  }, [pathname]);
+  const getLanguagePath = (langCode: string) => {
+    if (!pathname) return `/crazy-garage-website/${langCode}`;
+    const pathParts = pathname.split('/');
+    pathParts[2] = langCode;
+    return pathParts.join('/');
+  };
 
   const switchLanguage = async (langCode: string) => {
-    if (currentLang === langCode) return;
-    
-    setIsLoading(true);
     try {
-      // Get the path after the language code
-      const newPath = pathname.split('/').slice(2).join('/');
-      // Construct new URL with selected language
-      const newUrl = `/${langCode}/${newPath}`;
-      router.push(newUrl);
-      setCurrentLang(langCode);
+      setIsLoading(true);
+      await i18n.changeLanguage(langCode);
+      const newPath = getLanguagePath(langCode);
+      router.push(newPath);
     } catch (error) {
       console.error('Error switching language:', error);
     } finally {
@@ -65,6 +62,7 @@ export function useLanguage() {
     currentLang,
     isLoading,
     switchLanguage,
-    languageOptions
+    languageOptions,
+    currentLanguage
   };
 } 

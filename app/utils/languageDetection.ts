@@ -1,11 +1,13 @@
 import { languages, fallbackLng } from '../i18n/settings';
 
+const basePath = '/crazy-garage-website';
+
 export function detectLanguage(): string {
   if (typeof window === 'undefined') {
     return fallbackLng;
   }
 
-  const pathname = window.location.pathname;
+  const pathname = window.location.pathname.replace(basePath, '');
   const language = languages.find(
     (lang) => pathname.startsWith(`/${lang}/`) || pathname === `/${lang}`
   );
@@ -28,13 +30,13 @@ export function redirectToLanguage(lang: string) {
     return;
   }
 
-  const currentPath = window.location.pathname;
+  const currentPath = window.location.pathname.replace(basePath, '');
   const isRoot = currentPath === '/';
   const hasLang = languages.some(
     (l) => currentPath.startsWith(`/${l}/`) || currentPath === `/${l}`
   );
 
   if (isRoot || !hasLang) {
-    window.location.href = `/${lang}`;
+    window.location.href = `${basePath}/${lang}`;
   }
 } 

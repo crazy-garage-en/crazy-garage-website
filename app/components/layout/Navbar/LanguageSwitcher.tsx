@@ -11,17 +11,17 @@ const languages = [
     {
         code: 'en',
         name: 'English',
-        flag: '/images/flags/en.webp',
+        flag: '/crazy-garage-website/images/flags/en.webp',
     },
     {
         code: 'mk',
         name: 'Македонски',
-        flag: '/images/flags/mk.png',
+        flag: '/crazy-garage-website/images/flags/mk.png',
     },
     {
         code: 'sq',
         name: 'Shqip',
-        flag: '/images/flags/al.jpg',
+        flag: '/crazy-garage-website/images/flags/al.jpg',
     },
 ] as const;
 
@@ -29,7 +29,7 @@ export default function LanguageSwitcher() {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
-    const currentLang = pathname.split('/')[1] || 'en';
+    const currentLang = pathname?.split('/')[2] || 'en';
     const { i18n } = useTranslation('common', { lng: currentLang });
     const currentLanguage = languages.find((lang) => lang.code === currentLang) || languages[0];
 
@@ -92,7 +92,7 @@ export default function LanguageSwitcher() {
                     {languages.map((lang) => (
                         <Link
                             key={lang.code}
-                            href={`/${lang.code}`}
+                            href={`/crazy-garage-website/${lang.code}`}
                             className={`flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 transition-colors ${currentLang === lang.code ? 'bg-white/5' : ''}`}
                             onClick={() => handleLanguageChange(lang.code)}
                         >

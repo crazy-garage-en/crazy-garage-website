@@ -243,18 +243,18 @@ export default function Gallery({ lng }: { lng: string }) {
     const galleryItems = [
         {
             key: 'doorPanel',
-            beforeImage: '/images/gallery/left-side-door-before.JPG',
-            afterImage: '/images/gallery/left-side-door-after.JPG',
+            beforeImage: '/crazy-garage-website/images/gallery/left-side-door-before.JPG',
+            afterImage: '/crazy-garage-website/images/gallery/left-side-door-after.JPG',
         },
         {
             key: 'sidePanel',
-            beforeImage: '/images/gallery/inside-from-right-before-2.JPG',
-            afterImage: '/images/gallery/from-right-side-after.JPG',
+            beforeImage: '/crazy-garage-website/images/gallery/inside-from-right-before-2.JPG',
+            afterImage: '/crazy-garage-website/images/gallery/from-right-side-after.JPG',
         },
         {
             key: 'surface',
-            beforeImage: '/images/gallery/before.jpeg',
-            afterImage: '/images/gallery/after.jpeg',
+            beforeImage: '/crazy-garage-website/images/gallery/before.jpeg',
+            afterImage: '/crazy-garage-website/images/gallery/after.jpeg',
         },
     ];
 
@@ -310,7 +310,7 @@ export default function Gallery({ lng }: { lng: string }) {
                         {t('gallery.explore')}
                     </p>
                     <Link
-                        href={`/${lng}/gallery`}
+                        href={`/crazy-garage-website/${lng}/gallery`}
                         className="inline-flex items-center gap-3 px-8 py-4 bg-accent/10 text-accent hover:bg-accent/20 transition-all duration-300 rounded-xl font-medium text-lg group"
                     >
                         <span>{t('gallery.viewMore')}</span>

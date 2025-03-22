@@ -21,6 +21,7 @@ interface ServiceCardProps {
     description: string;
     features: string[];
     delay: number;
+    lng: string;
 }
 
 // Memoize ServiceCard for better performance
@@ -30,6 +31,7 @@ const ServiceCard = memo(({
     description,
     features,
     delay,
+    lng,
 }: ServiceCardProps) => {
     const [isHovered, setIsHovered] = useState(false);
 
@@ -79,7 +81,7 @@ const ServiceCard = memo(({
                 </ul>
 
                 <motion.a
-                    href="#gallery"
+                    href={`/crazy-garage-website/${lng}#gallery`}
                     className="inline-flex items-center gap-3 text-accent hover:text-white transition-all duration-300 group/link mt-auto text-lg font-medium"
                     whileHover={{ x: 4 }}
                     transition={{ duration: 0.2 }}
@@ -168,6 +170,7 @@ export default function Services({ lng }: { lng: string }) {
                             description={t(service.descriptionKey)}
                             features={t(service.featuresKey, { returnObjects: true }) as string[]}
                             delay={index}
+                            lng={lng}
                         />
                     ))}
                 </div>

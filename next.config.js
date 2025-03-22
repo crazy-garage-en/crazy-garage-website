@@ -18,10 +18,9 @@ const nextConfig = {
     typescript: {
         ignoreBuildErrors: true,
     },
-    // Configure static file serving
-    trailingSlash: true,
-    // Ensure static assets are handled correctly
-    assetPrefix: '',
+    // Configure for GitHub Pages
+    basePath: '/crazy-garage-website',
+    assetPrefix: '/crazy-garage-website',
     // Disable experimental features
     experimental: {
         optimizePackageImports: ['@fortawesome/free-solid-svg-icons'],
