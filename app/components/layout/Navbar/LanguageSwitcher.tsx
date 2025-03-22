@@ -5,23 +5,24 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
-import '../../../i18n/client';
+import '@/app/i18n/client';
+import { getPath } from '@/app/utils/basePath';
 
 const languages = [
     {
         code: 'en',
         name: 'English',
-        flag: '/crazy-garage-website/images/flags/en.webp',
+        flag: '/images/flags/en.webp',
     },
     {
         code: 'mk',
         name: 'Македонски',
-        flag: '/crazy-garage-website/images/flags/mk.png',
+        flag: '/images/flags/mk.png',
     },
     {
         code: 'sq',
         name: 'Shqip',
-        flag: '/crazy-garage-website/images/flags/al.jpg',
+        flag: '/images/flags/al.jpg',
     },
 ] as const;
 
@@ -47,6 +48,12 @@ export default function LanguageSwitcher() {
     const handleLanguageChange = async (langCode: string) => {
         await i18n.changeLanguage(langCode);
         setIsOpen(false);
+    };
+
+    const getLanguagePath = (langCode: string) => {
+        // Get the path after the language code
+        const pathParts = pathname?.split('/').slice(3) || [];
+        return getPath(`/${langCode}${pathParts.length ? '/' + pathParts.join('/') : ''}`);
     };
 
     return (
@@ -92,7 +99,7 @@ export default function LanguageSwitcher() {
                     {languages.map((lang) => (
                         <Link
                             key={lang.code}
-                            href={`/crazy-garage-website/${lang.code}`}
+                            href={getLanguagePath(lang.code)}
                             className={`flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 transition-colors ${currentLang === lang.code ? 'bg-white/5' : ''}`}
                             onClick={() => handleLanguageChange(lang.code)}
                         >
