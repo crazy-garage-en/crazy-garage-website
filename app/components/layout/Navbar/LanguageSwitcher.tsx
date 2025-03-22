@@ -5,7 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
-import '../../../i18n/client';
+import '@/app/i18n/client';
+import { getPath } from '@/app/utils/basePath';
 
 const languages = [
     {
@@ -29,7 +30,7 @@ export default function LanguageSwitcher() {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const pathname = usePathname();
-    const currentLang = pathname.split('/')[1] || 'en';
+    const currentLang = pathname?.split('/')[1] || 'en';
     const { i18n } = useTranslation('common', { lng: currentLang });
     const currentLanguage = languages.find((lang) => lang.code === currentLang) || languages[0];
 
@@ -47,6 +48,12 @@ export default function LanguageSwitcher() {
     const handleLanguageChange = async (langCode: string) => {
         await i18n.changeLanguage(langCode);
         setIsOpen(false);
+    };
+
+    const getLanguagePath = (langCode: string) => {
+        // Get the path after the language code
+        const pathParts = pathname?.split('/').slice(2) || [];
+        return getPath(`/${langCode}${pathParts.length ? '/' + pathParts.join('/') : ''}`);
     };
 
     return (
@@ -92,7 +99,7 @@ export default function LanguageSwitcher() {
                     {languages.map((lang) => (
                         <Link
                             key={lang.code}
-                            href={`/${lang.code}`}
+                            href={getLanguagePath(lang.code)}
                             className={`flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 transition-colors ${currentLang === lang.code ? 'bg-white/5' : ''}`}
                             onClick={() => handleLanguageChange(lang.code)}
                         >
