@@ -3,22 +3,29 @@
 import i18next from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import resourcesToBackend from 'i18next-resources-to-backend'
-import LanguageDetector from 'i18next-browser-languagedetector'
-import { getOptions } from './settings'
+import { languages, fallbackLng } from './settings'
+
+const basePath = '/crazy-garage-website'
 
 i18next
   .use(initReactI18next)
-  .use(LanguageDetector)
   .use(resourcesToBackend((language: string, namespace: string) => {
     return import(`./locales/${language}/${namespace}.json`)
   }))
   .init({
-    ...getOptions(),
-    lng: undefined, // let detect the language on client side
-    detection: {
-      order: ['path', 'htmlTag', 'cookie', 'navigator'],
+    fallbackLng,
+    supportedLngs: languages,
+    lng: undefined, // Let detect from URL
+    defaultNS: 'common',
+    fallbackNS: 'common',
+    ns: ['common'],
+    interpolation: {
+      escapeValue: false,
     },
-    preload: typeof window !== 'undefined' ? [] : getOptions().supportedLngs,
+    detection: {
+      order: ['path'],
+      lookupFromPathIndex: 1, // Skip basePath
+    },
   })
 
 export default i18next

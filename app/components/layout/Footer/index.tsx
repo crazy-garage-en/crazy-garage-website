@@ -12,7 +12,7 @@ import { usePathname } from 'next/navigation';
 
 export default function Footer() {
     const pathname = usePathname();
-    const lng = pathname.split('/')[1] || 'en';
+    const lng = pathname?.split('/')[1] || 'en';
     const { t } = useTranslation('common', { lng });
 
     return (

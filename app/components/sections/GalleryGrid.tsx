@@ -8,31 +8,40 @@ import GalleryItem from './GalleryItem';
 import { useTranslation } from 'react-i18next';
 import '../../i18n/client';
 
+interface GalleryItem {
+  id: number;
+  title: string;
+  beforeImage: string;
+  afterImage: string;
+  description: string;
+  category: string;
+}
+
 // Gallery items data
-const galleryItems = [
+const galleryItems: GalleryItem[] = [
   {
     id: 1,
-    title: 'Interior Door Panel',
-    description: 'Professional interior restoration and deep cleaning',
-    category: 'interior',
-    beforeImage: '/images/gallery/left-side-door-before.JPG',
-    afterImage: '/images/gallery/left-side-door-after.JPG',
+    title: 'Door Panel',
+    beforeImage: '/crazy-garage-website/images/gallery/left-side-door-before.JPG',
+    afterImage: '/crazy-garage-website/images/gallery/left-side-door-after.JPG',
+    description: 'Door panel restoration',
+    category: 'interior'
   },
   {
     id: 2,
-    title: 'Interior Side Panel',
-    description: 'Complete interior detailing and surface restoration',
-    category: 'interior',
-    beforeImage: '/images/gallery/inside-from-right-before-2.JPG',
-    afterImage: '/images/gallery/from-right-side-after.JPG',
+    title: 'Side Panel',
+    beforeImage: '/crazy-garage-website/images/gallery/inside-from-right-before-2.JPG',
+    afterImage: '/crazy-garage-website/images/gallery/from-right-side-after.JPG',
+    description: 'Side panel restoration',
+    category: 'interior'
   },
   {
     id: 3,
-    title: 'Surface Treatment',
-    description: 'Professional surface cleaning and protection',
-    category: 'interior',
-    beforeImage: '/images/gallery/before.jpeg',
-    afterImage: '/images/gallery/after.jpeg',
+    title: 'Surface',
+    beforeImage: '/crazy-garage-website/images/gallery/before.jpeg',
+    afterImage: '/crazy-garage-website/images/gallery/after.jpeg',
+    description: 'Surface restoration',
+    category: 'interior'
   },
   // Add more gallery items here
 ];
